@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Карточки | Проект 1</title>
+</head>
+<body>
+  <div class="container">
+    <div
+    class="slide"
+    style="background-image: url('https://source.unsplash.com/ddZYOtZUnBk/1920x1403');"
+    >
+    <h3>Pasta</h3>
+  </div>
+  <div
+  class="slide"
+  style="
+  background-image: url('https://source.unsplash.com/vdx5hPQhXFk/1920x1485');
+  "
+  >
+  <h3>Cake</h3>
+</div>
+<div
+class="slide"
+style="
+background-image: url('https://source.unsplash.com/tHjXXy1kk_Q/1920x1440');
+"
+>
+<h3>Seafood</h3>
+</div>
+<div
+class="slide active"
+style="
+background-image: url('https://source.unsplash.com/_Zn_7FzoL1w/1920x1280');
+"
+>
+<h3>Fruits</h3>
+</div>
+<div
+class="slide"
+style="
+background-image: url('https://source.unsplash.com/fxJTl_gDh28/1920x1279');
+"
+>
+<h3>Soup</h3>
+</div>
+</div>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  for(const slide of slides){
+    slide.addEventListener('click', () => {
+      clearActiveClasses()
+      slide.classList.add('active')
+    })
+  }
+  function clearActiveClasses(){
+    slides.forEach((slide)=>{
+      slide.classList.remove('active');
+    })
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Слайдер | Проект 3</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div style="background: linear-gradient(45deg, rgb(3, 147, 158), rgb(254, 148, 12));">
+          <h1>Three Robots</h1>
+          <p>Love, death & robots</p>
+        </div>
+        <div style="background: linear-gradient(45deg, rgb(146, 176, 30), rgb(236, 181, 200));">
+          <h1>Witness, The</h1>
+          <p>Love, death & robots</p>
+        </div>
+        <div style="background: linear-gradient(45deg, rgb(228, 66, 4), rgb(246, 183, 7));">
+          <h1>Life Hutch</h1>
+          <p>Love, death & robots</p>
+        </div>
+        <div style="background: linear-gradient(45deg, rgb(252, 107, 102), rgb(172, 224, 212));">
+          <h1>Good Hunting</h1>
+          <p>Love, death & robots</p>
+        </div>
+        <div style="background: linear-gradient(45deg, rgb(250, 246, 113), rgb(248, 186, 199));">
+          <h1>Zima Blue</h1>
+          <p>Love, death & robots</p>
+        </div>
+        
+      </div>
+      <div class="main-slide">
+        <div
+          style="
+            background-image: url('https://source.unsplash.com/sf_1ZDA1YFw/1920x1186');
+          "
+        ></div>
+        <div
+          style="
+            background-image: url('https://source.unsplash.com/vbAEHCrvXZ0/1920x2400');
+          "
+        ></div>
+        <div
+          style="
+            background-image: url('https://source.unsplash.com/yPI38imbQSI/1920x2879');
+          "
+        ></div>
+        <div
+          style="
+            background-image: url('https://source.unsplash.com/9aOswReDKPo/1920x1438');
+          "
+        ></div>
+        <div
+          style="
+            background-image: url('https://source.unsplash.com/9z-veIxii6k/1920x2400');
+          "
+        ></div>
+        
+      </div>
+      <div class="controls">
+        <button class="down-button">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+        <button class="up-button">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+    <script>
+      const upBtn = document.querySelector('.up-button')
+      const downBtn = document.querySelector('.down-button')
+      const sidebar = document.querySelector('.sidebar')
+      const container = document.querySelector('.container')
+      const mainSlide = document.querySelector('.main-slide')
+      const slidesCount = mainSlide.querySelectorAll('div').length
+      let activeSlideIndex = 0
+
+      sidebar.style.top = `-${(slidesCount-1)*100}vh`
+
+      upBtn.addEventListener('click', () => {
+        changeSlide ('up')
+      })
+
+      downBtn.addEventListener('click', () => {
+        changeSlide ('down')
+      })
+
+      function changeSlide (direction){
+        if(direction === 'up'){
+          activeSlideIndex++
+          if(activeSlideIndex === slidesCount){
+            activeSlideIndex = 0
+          } 
+        } else if (direction === 'down'){
+          activeSlideIndex--
+          if(activeSlideIndex<0){
+            activeSlideIndex = slidesCount -1
+          }
+        }
+        const height = container.clientHeight
+
+        mainSlide.style.transform = `translateY(-${activeSlideIndex*height}px)`
+        sidebar.style.transform = `translateY(${activeSlideIndex*height}px)`
+      }
+    </script>
+  </body>
+</html>
